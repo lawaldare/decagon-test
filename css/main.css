@@ -118,7 +118,8 @@
   background-image: url("../image/wind.svg");
   background-repeat: no-repeat;
   background-size: cover;
-  margin-top: 176px;
+  /* margin-top: 176px; */
+  bottom: 0;
 }
 
 /* section 2 */
