@@ -698,7 +698,7 @@
   }
 
   .second-section {
-    margin-top: 1250px;
+    margin-top: 1140px;
   }
 
   .service-1,
@@ -728,5 +728,11 @@
     font-size: 18px;
     text-align: center;
     color: white;
+  }
+}
+
+@media (max-width: 320px) {
+  .second-section {
+    margin-top: 1250px;
   }
 }
