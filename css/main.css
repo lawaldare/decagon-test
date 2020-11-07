@@ -10,6 +10,10 @@
   border: none !important;
 }
 
+.statusMessage {
+  display: none;
+}
+
 .hero-container {
   background-color: #0a1f73;
   width: 100%;
