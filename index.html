@@ -254,6 +254,7 @@
 
   </div>
 
+  <!-- fifth section -->
 
   <div class="fifth-section">
     <div class="container">
@@ -335,6 +336,8 @@
   </div>
 
 
+  <!-- sixth-section -->
+
   <div class="sixth-section">
     <div class="container">
       <h2 class="second-section-header">Here's what our mentees at MentorHQ <br> have to say about us</h2>
@@ -380,6 +383,9 @@
   </div>
 
 
+  <!-- seventh section -->
+
+
   <div class="seventh-section">
     <div class="container">
       <div class="seventh-box">
@@ -387,11 +393,15 @@
           a personal mentor. It's about time you did too.</h2>
         <div class="seventh-section-buttons">
           <button class="btn col-md-5 find-mentor">Find a Mentor</button>
-          <button class="btn col-md-5 become-mentor">Become a Mentor</button>
+          <button type="button" class="btn col-md-5 become-mentor" data-toggle="modal" data-target="#mentorForm">Become
+            a Mentor</button>
         </div>
       </div>
     </div>
   </div>
+
+
+  <!-- footer -->
 
 
   <div class="footer">
@@ -433,6 +443,43 @@
         <hr>
         <div class="footer-bottom">
           <p class="footer-text text-center">2020 copyright. All Rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="mentorForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Mentor Form</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="firstName">First name</label>
+              <input type="text" class="form-control" id="firstName" placeholder="Enter your first name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+              <label for="phoneNumber">Phone Number</label>
+              <input type="number" class="form-control" id="phoneNumber" placeholder="Enter your number">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
