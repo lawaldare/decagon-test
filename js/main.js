@@ -39,14 +39,14 @@ $(document).ready(function(){
 $(document).ready(function() {
 
   // process the form
-  $('#mentorForm').submit(function(event) {
+  $('#newMentorForm').submit(function(event) {
 
       // get the form data
       // there are many ways to get this data using jQuery (you can use the class or id also)
       var formData = {
-          'name'              : $('#firstName').val(),
-          'email'             : $('#name').val(),
-          'superheroAlias'    : $('#phoneNumber').val()
+          'firstName'      : $('#firstName').val(),
+          'email'          : $('#email').val(),
+          'phoneNumber'    : $('#phoneNumber').val()
       };
 
       // process the form
@@ -55,15 +55,18 @@ $(document).ready(function() {
           url         : 'process.php', // the url where we want to POST
           data        : formData, // our data object
           dataType    : 'json', // what type of data do we expect back from the server
-          encode      : true
-      })
-          // using the done promise callback
-          .done(function(data) {
+          success : function(data){
+            console.log(data);
+          }
+      }).done(function(data) {
 
               // log data to the console so we can see
               console.log(data);
 
               // here we will handle errors and validation messages
+              $('#firstName').val('');
+              $('#email').val('');
+              $('#phoneNumber').val('');
           });
 
       // stop the form from submitting the normal way and refreshing the page

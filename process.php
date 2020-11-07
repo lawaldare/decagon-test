@@ -6,14 +6,14 @@ $data           = array();      // array to pass back data
 // validate the variables ======================================================
 // if any of these variables don't exist, add an error to our $errors array
 
-if (empty($_POST['name']))
-    $errors['name'] = 'Name is required.';
+if (empty($_POST['firstName']))
+    $errors['firstName'] = 'First Name is required.';
 
 if (empty($_POST['email']))
     $errors['email'] = 'Email is required.';
 
-if (empty($_POST['superheroAlias']))
-    $errors['superheroAlias'] = 'Superhero alias is required.';
+if (empty($_POST['phoneNumber']))
+    $errors['phoneNumber'] = 'Superhero alias is required.';
 
 // return a response ===========================================================
 
@@ -26,7 +26,7 @@ if ( ! empty($errors)) {
 } else {
 
     // if there are no errors process our form, then return a message
-
+    echo var_dump(json_decode($_POST['Absence']));
     // DO ALL YOUR FORM PROCESSING HERE
     // THIS CAN BE WHATEVER YOU WANT TO DO (LOGIN, SAVE, UPDATE, WHATEVER)
 
