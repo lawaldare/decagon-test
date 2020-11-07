@@ -375,7 +375,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   padding-left: 30px;
-  transition: all 0.5s;
+  cursor: pointer;
 }
 
 .card-1 {
@@ -415,6 +415,7 @@
   bottom: 20px !important;
   color: white;
   display: none;
+  transition: all 0.5s;
 }
 
 .picture-card:hover .titles {
@@ -435,27 +436,9 @@
   margin-bottom: 20px;
 }
 
-.show-info {
-  display: unset !important;
-  background-color: rgba(0, 0, 0, 0.568);
-  padding: 30px;
-  transition: all 1s;
-}
-
 .pictures {
   justify-content: space-between;
   margin-bottom: 50px;
-}
-
-.picture-overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: #0707075e;
-  width: 100%;
-  display: none;
 }
 
 .view-mentor-button {
