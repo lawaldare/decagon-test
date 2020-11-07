@@ -1,41 +1,39 @@
 <?php
 
-// Define some constants
-define( "RECIPIENT_NAME", "John Smith" );
-define( "RECIPIENT_EMAIL", "john@example.com" );
-define( "EMAIL_SUBJECT", "Visitor Message" );
+$errors         = array();      // array to hold validation errors
+$data           = array();      // array to pass back data
 
-// Read the form values
-$success = false;
-$senderName = isset( $_POST['firstName'] ) ? preg_replace( "/[^\.\-\' a-zA-Z0-9]/", "", $_POST['firstName'] ) : "";
-$senderEmail = isset( $_POST['email'] ) ? preg_replace( "/[^\.\-\_\@a-zA-Z0-9]/", "", $_POST['eamil'] ) : "";
-$message = isset( $_POST['phoneNumber'] ) ? preg_replace( "/(From:|To:|BCC:|CC:|Subject:|Content-Type:)/", "", $_POST['phoneNumber'] ) : "";
+// validate the variables ======================================================
+// if any of these variables don't exist, add an error to our $errors array
 
-// If all values exist, send the email
-if ( $senderName && $senderEmail && $message ) {
-  $recipient = RECIPIENT_NAME . " <" . RECIPIENT_EMAIL . ">";
-  $headers = "From: " . $senderName . " <" . $senderEmail . ">";
-  $success = mail( $recipient, EMAIL_SUBJECT, $message, $headers );
-}
+if (empty($_POST['name']))
+    $errors['name'] = 'Name is required.';
 
-// Return an appropriate response to the browser
-if ( isset($_GET["ajax"]) ) {
-  echo $success ? "success" : "error";
+if (empty($_POST['email']))
+    $errors['email'] = 'Email is required.';
+
+if (empty($_POST['superheroAlias']))
+    $errors['superheroAlias'] = 'Superhero alias is required.';
+
+// return a response ===========================================================
+
+// if there are any errors in our errors array, return a success boolean of false
+if ( ! empty($errors)) {
+
+    // if there are items in our errors array, return those errors
+    $data['success'] = false;
+    $data['errors']  = $errors;
 } else {
-?>
-<html>
 
-<head>
-  <title>Thanks!</title>
-</head>
+    // if there are no errors process our form, then return a message
 
-<body>
-  <?php if ( $success ) echo "<p>Thanks for sending your message! We'll get back to you shortly.</p>" ?>
-  <?php if ( !$success ) echo "<p>There was a problem sending your message. Please try again.</p>" ?>
-  <p>Click your browser's Back button to return to the page.</p>
-</body>
+    // DO ALL YOUR FORM PROCESSING HERE
+    // THIS CAN BE WHATEVER YOU WANT TO DO (LOGIN, SAVE, UPDATE, WHATEVER)
 
-</html>
-<?php
+    // show a message of success and provide a true success variable
+    $data['success'] = true;
+    $data['message'] = 'Success!';
 }
-?>
+
+// return all our data to an AJAX call
+echo json_encode($data);

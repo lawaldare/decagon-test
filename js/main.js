@@ -36,62 +36,38 @@ $(document).ready(function(){
 
 
 
-let messageDelay = 2000;  // How long to display status messages (in milliseconds)
+$(document).ready(function() {
 
-$(function() {
-  // Get the form.
-  var contactForm = $('#ajax-contact');
-  if ( !$('#firstName').val() || !$('#email').val() || !$('#phoneNumber').val() ) {
+  // process the form
+  $('#mentorForm').submit(function(event) {
 
-    // No; display a warning message and return to the form
-    $('#incompleteMessage').fadeIn().delay(messageDelay).fadeOut();
-    contactForm.fadeOut().delay(messageDelay).fadeIn();
+      // get the form data
+      // there are many ways to get this data using jQuery (you can use the class or id also)
+      var formData = {
+          'name'              : $('#firstName').val(),
+          'email'             : $('#name').val(),
+          'superheroAlias'    : $('#phoneNumber').val()
+      };
 
-  } else {
+      // process the form
+      $.ajax({
+          type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+          url         : 'process.php', // the url where we want to POST
+          data        : formData, // our data object
+          dataType    : 'json', // what type of data do we expect back from the server
+          encode      : true
+      })
+          // using the done promise callback
+          .done(function(data) {
 
-    // Yes; submit the form to the PHP script via Ajax
+              // log data to the console so we can see
+              console.log(data);
 
-    $('#sendingMessage').fadeIn();
-    contactForm.fadeOut();
+              // here we will handle errors and validation messages
+          });
 
-    $.ajax( {
-      url: contactForm.attr( 'action' ) + "?ajax=true",
-      type: contactForm.attr( 'method' ),
-      data: contactForm.serialize(),
-      success: submitFinished
-    } );
-  }
+      // stop the form from submitting the normal way and refreshing the page
+      event.preventDefault();
+  });
 
-  // Prevent the default form submission occurring
-  return false;
-})
-
-
-// Handle the Ajax response
-function submitFinished( response ) {
-  response = $.trim( response );
-  $('#sendingMessage').fadeOut();
-
-  if ( response == "success" ) {
-
-    // Form submitted successfully:
-    // 1. Display the success message
-    // 2. Clear the form fields
-    // 3. Fade the content back in
-
-    $('#successMessage').fadeIn().delay(messageDelay).fadeOut();
-    $('#senderName').val( "" );
-    $('#senderEmail').val( "" );
-    $('#message').val( "" );
-
-    $('#content').delay(messageDelay+500).fadeTo( 'slow', 1 );
-
-  } else {
-
-    // Form submission failed: Display the failure message,
-    // then redisplay the form
-    $('#failureMessage').fadeIn().delay(messageDelay).fadeOut();
-    $('#contactForm').delay(messageDelay+500).fadeIn();
-  }
-}
-
+});
