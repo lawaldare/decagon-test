@@ -375,6 +375,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   padding-left: 30px;
+  transition: all 0.5s;
 }
 
 .card-1 {
@@ -411,8 +412,15 @@
 }
 
 .titles {
-  bottom: 20px;
+  bottom: 20px !important;
   color: white;
+  display: none;
+}
+
+.picture-card:hover .titles {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.568);
+  padding: 30px;
 }
 
 .titles .name {
@@ -425,6 +433,13 @@
   margin-bottom: unset !important;
   text-transform: capitalize;
   margin-bottom: 20px;
+}
+
+.show-info {
+  display: unset !important;
+  background-color: rgba(0, 0, 0, 0.568);
+  padding: 30px;
+  transition: all 1s;
 }
 
 .pictures {
@@ -440,6 +455,7 @@
   left: 0;
   background: #0707075e;
   width: 100%;
+  display: none;
 }
 
 .view-mentor-button {
