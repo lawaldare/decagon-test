@@ -67,8 +67,8 @@
 }
 
 .img-box {
-  width: 500px;
-  height: 400px;
+  width: 400px;
+  height: 300px;
   position: absolute;
 }
 
@@ -92,7 +92,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   top: 188px;
-  left: 32px;
+  left: 105px;
   z-index: 10;
 }
 
